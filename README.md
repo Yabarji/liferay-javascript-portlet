@@ -147,5 +147,5 @@ When you are logged in to Liferay, you can use **/delegate/rest/me** to fetch on
 Portlet uses [Jaunt API](http://www.jaunt-api.com) to fetch websites and cache them for faster accessibility. Here's how to install the file (provided) into your local Maven repository:
 
 ```shell
-mvn install:install-file -Dfile=poc-js-portlet/lib/jaunt1.1.4.jar -DgroupId=com.jaunt-api -DartifactId=jaunt -Dversion=1.1.4 -Dpackaging=jar
+mvn install:install-file -Dfile=js-portlet/lib/jaunt1.1.4.jar -DgroupId=com.jaunt-api -DartifactId=jaunt -Dversion=1.1.4 -Dpackaging=jar
 ```
