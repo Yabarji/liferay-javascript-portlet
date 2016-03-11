@@ -5,10 +5,8 @@
 	<portlet>
 		<portlet-name>poc-angular-portlet</portlet-name>
 		<icon>/icon.png</icon>
+		<configuration-action-class>com.hannikkala.poc.portlet.controller.ConfigurationController</configuration-action-class>
 		<instanceable>true</instanceable>
-		<!--<header-portlet-css>/css/angular-csp.css</header-portlet-css>
-		<footer-portlet-javascript>/bower_components/angular/angular.min.js</footer-portlet-javascript>
-		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>-->
 	</portlet>
 	<role-mapper>
 		<role-name>administrator</role-name>

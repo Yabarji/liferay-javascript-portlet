@@ -7,6 +7,21 @@
               http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
        ">
 
-       <context:component-scan base-package="com.hannikkala.poc.portlet"/>
+    <context:component-scan base-package="com.hannikkala.poc.portlet"/>
+
+    <bean id="templateResolver" class="com.hannikkala.poc.thymeleaf.CacheTemplateResolver">
+        <property name="templateMode" value="HTML5"/>
+        <property name="characterEncoding" value="UTF-8"/>
+        <property name="order" value="1"/>
+        <property name="cacheName" value="default" />
+    </bean>
+
+    <bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
+        <property name="templateResolver" ref="templateResolver"/>
+    </bean>
+
+    <bean id="thymeleafSpringResolver" class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
+        <property name="templateEngine" ref="templateEngine"/>
+    </bean>
 
 </beans>

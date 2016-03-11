@@ -12,6 +12,8 @@
 		<expiration-cache>0</expiration-cache>
 		<supports>
 			<mime-type>text/html</mime-type>
+			<portlet-mode>VIEW</portlet-mode>
+			<portlet-mode>EDIT</portlet-mode>
 		</supports>
 		<portlet-info>
 			<title>Angular PoC Portlet</title>

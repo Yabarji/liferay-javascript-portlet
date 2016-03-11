@@ -1,11 +1,14 @@
 package com.hannikkala.poc.delegate.controller;
 
+import com.hannikkala.poc.delegate.config.RequestConfig;
+import com.hannikkala.poc.delegate.service.RequestConfigServiceImpl;
 import org.apache.http.*;
 import org.apache.http.client.HttpClient;
 import org.apache.http.entity.InputStreamEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicHttpEntityEnclosingRequest;
 import org.apache.http.message.BasicHttpRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,15 +28,22 @@ import java.util.Enumeration;
 @RequestMapping("/rest/api/**")
 public class ProxyController {
 
+    @Autowired
+    private RequestConfigServiceImpl requestConfigService;
+
     @RequestMapping(method = {RequestMethod.DELETE, RequestMethod.GET, RequestMethod.HEAD, RequestMethod.OPTIONS,
         RequestMethod.PATCH, RequestMethod.POST, RequestMethod.PUT, RequestMethod.TRACE})
     public void proxyRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        HttpRequest httpRequest = ProxyUtil.createHttpRequest(request);
+        RequestConfig configuration = requestConfigService.findConfiguration(request.getPathInfo());
+        doProxyRequest(request, response, configuration.getLocation(), "/delegate/rest");
+    }
+
+    public static void doProxyRequest(HttpServletRequest request, HttpServletResponse response, String baseURL, String proxyContextPath) throws IOException {
+        HttpRequest httpRequest = ProxyUtil.createHttpRequest(request, proxyContextPath);
         ProxyUtil.copyRequestHeaders(request, httpRequest);
         HttpClient client = HttpClientBuilder.create().build();
 
-        // TODO: Get configuration value.
-        URL url = new URL("http://localhost:8081");
+        URL url = new URL(baseURL);
         HttpHost httpHost = new HttpHost(url.getHost(), url.getPort(), url.getProtocol());
         HttpResponse httpResponse = client.execute(httpHost, httpRequest);
 
@@ -53,15 +63,15 @@ public class ProxyController {
 
     private static class ProxyUtil {
 
-        public static String rewriteUrl(HttpServletRequest request) {
+        public static String rewriteUrl(HttpServletRequest request, String proxyContextPath) {
             String requestURI = request.getRequestURI();
 
-            requestURI = requestURI.replaceFirst("/delegate/rest", "");
+            requestURI = requestURI.replaceFirst(proxyContextPath, "");
             return requestURI;
         }
 
-        public static HttpRequest createHttpRequest(HttpServletRequest request) throws IOException {
-            String requestURI = rewriteUrl(request);
+        public static HttpRequest createHttpRequest(HttpServletRequest request, String proxyContextPath) throws IOException {
+            String requestURI = rewriteUrl(request, proxyContextPath);
             if(request.getContentLength() > 0) {
                 HttpEntityEnclosingRequest proxyReq = new BasicHttpEntityEnclosingRequest(request.getMethod(), requestURI);
                 proxyReq.setEntity(new InputStreamEntity(request.getInputStream(), request.getContentLength()));
