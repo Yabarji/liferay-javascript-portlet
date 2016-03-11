@@ -8,6 +8,7 @@ import org.springframework.cache.support.SimpleCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.servlet.ViewResolver;
@@ -27,6 +28,7 @@ import java.util.Arrays;
 @Configuration
 @ComponentScan(basePackages = {"com.hannikkala.poc.service"})
 @EnableCaching
+@PropertySource("classpath:application.properties")
 public class RootConfig {
 
     @Bean
@@ -37,4 +39,8 @@ public class RootConfig {
         return cacheManager;
     }
 
+    @Bean
+    public PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
 }

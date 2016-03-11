@@ -10,6 +10,7 @@ import com.liferay.portal.util.PortalUtil;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,9 @@ public class MeController {
 
     private static final Log _log = LogFactoryUtil.getLog(MeController.class);
 
+    @Value("${jwt.secretkey}")
+    private String jwtSecretkey;
+
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<?> token(HttpServletRequest request) throws SystemException, PortalException {
@@ -47,7 +51,7 @@ public class MeController {
         String[] rolesForUser = liferayUserService.listRolesForUser(user);
         String jwt = Jwts.builder().setSubject(user.getScreenName())
                 .claim("roles", rolesForUser).setIssuedAt(new Date())
-                .signWith(SignatureAlgorithm.HS256, "secretkey").compact();
+                .signWith(SignatureAlgorithm.HS256, jwtSecretkey).compact();
         return ResponseEntity.ok(new TokenResponse(jwt, user.getEmailAddress(), rolesForUser));
     }
 
