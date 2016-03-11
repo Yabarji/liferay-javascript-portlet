@@ -5,8 +5,7 @@
 	<packaging>pom</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<modules>
-		<module>poc-angular-client</module>
-		<module>rest-service</module>
+        <module>example</module>
 		<module>poc-js-portlet</module>
 	</modules>
 	<properties>
