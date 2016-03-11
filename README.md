@@ -63,11 +63,11 @@ Portlet will show up after page is refreshed.
 
 # Running example project
 
-There is an example project in example directory. Example project contains two modules: __poc-angular-client__ and __rest-service__. Naming should be self-explaining :) 
+There is an example project in example directory. Example project contains two modules: __angular-client__ and __rest-service__. Naming should be self-explaining :) 
 
-#### Running poc-angular-client
+#### Running angular-client
 
-Go to __example/poc-angular-client__ and run `npm install && gulp serve:dist`. This will install dependencies and run client on port 3000. Angular client runs on NodeJS and BrowserSync.
+Go to __example/angular-client__ and run `npm install && gulp serve:dist`. This will install dependencies and run client on port 3000. Angular client runs on NodeJS and BrowserSync.
 
 #### Running rest-service
 
@@ -132,7 +132,7 @@ angular.bootstrap(document.getElementById(portletId), ['mymodule']);
 
 #### Resource paths
 
-All resources from *index.html* are mapped as __/poc-js-portlet/p/\<portlet_instance_id\>/path__. You can use variables set to an index page as stated above.
+All resources from *index.html* are mapped as __/js-portlet/p/\<portlet_instance_id\>/path__. You can use variables set to an index page as stated above.
 
 #### REST Proxy
 
