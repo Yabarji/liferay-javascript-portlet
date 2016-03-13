@@ -1,5 +1,6 @@
 package com.hannikkala.poc.portlet.controller;
 
+import com.hannikkala.poc.service.AppContextServiceImpl;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.ConfigurationAction;
@@ -7,6 +8,8 @@ import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portlet.PortletPreferencesFactoryUtil;
 import com.liferay.portlet.portletconfiguration.util.PortletConfigurationUtil;
+import org.springframework.cache.CacheManager;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +41,12 @@ public class ConfigurationController implements ConfigurationAction {
 
     @Override
     public String render(PortletConfig portletConfig, RenderRequest renderRequest, RenderResponse renderResponse) throws Exception {
+        if(renderRequest.getParameter("clearCache") != null) {
+            ApplicationContext appContext = AppContextServiceImpl.getAppContext();
+            CacheManager cacheManager = appContext.getBean(CacheManager.class);
+            cacheManager.getCache("default").clear();
+        }
+
         String portletResource = ParamUtil.getString(renderRequest, "portletResource");
         PortletPreferences prefs = PortletPreferencesFactoryUtil.getPortletSetup(renderRequest, portletResource);
         renderRequest.setAttribute("root", prefs.getValue("root", ""));
