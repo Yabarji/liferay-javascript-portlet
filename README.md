@@ -13,7 +13,7 @@ The development process goes more like change, automatic refresh, change, automa
 ## Features
 
 * Fetches _index.html_ from external source as [Thymeleaf template](http://www.thymeleaf.org)
-* Caches resources from the index page internally for faster accessibility (upcoming)
+* Caches resources from the index page internally for faster accessibility
 * Support for multiple portlets  
 * Support for multiple JavaScript applications (as different portlet instances)
 * Support for multiple REST services. Configure *application.json* inside the WAR package
@@ -79,7 +79,7 @@ Go to __example/rest-service__ and run `mvn spring-boot:run`. This will run REST
 
 ## TODO
 
-- [ ] Cache fetching for static resources
+- [x] ~~Cache fetching for static resources~~
 - [x] ~~Configurable JWT secret key~~ DONE
 - [ ] Way better error communication
 - [ ] An actual architecture picture
