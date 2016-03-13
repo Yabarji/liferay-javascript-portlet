@@ -14,5 +14,11 @@
     <div>
         <input type="button" value="Save" onClick="submitForm(document.<portlet:namespace />fm);" />
     </div>
+    <div>
+        <liferay-portlet:renderURL portletConfiguration="true" var="clearCacheURL">
+            <liferay-portlet:param name="clearCache" value="true" />
+        </liferay-portlet:renderURL>
+        <a href="${clearCacheURL}">Clear cache</a>
+    </div>
 </form>
 
