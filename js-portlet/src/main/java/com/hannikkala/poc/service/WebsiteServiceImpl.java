@@ -87,6 +87,8 @@ public class WebsiteServiceImpl {
 
         String out = output.toString().replaceAll("[//]*<!\\[CDATA\\[", "").replaceAll("[//]*]]>", "");
 
+        userAgent.close();
+
         return out;
     }
 
