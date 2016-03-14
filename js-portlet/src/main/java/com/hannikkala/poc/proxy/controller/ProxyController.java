@@ -89,6 +89,7 @@ public class ProxyController {
         contentTypeMap.put("gif", "image/gif");
         contentTypeMap.put("js", "application/javascript");
         contentTypeMap.put("css", "text/css");
+        contentTypeMap.put("ico", "image/x-icon");
         for(Map.Entry<String, String> entry : contentTypeMap.entrySet()) {
             if(requestURI.endsWith(entry.getKey())) {
                 return entry.getValue();

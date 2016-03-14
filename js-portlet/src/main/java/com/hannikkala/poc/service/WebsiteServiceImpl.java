@@ -43,6 +43,7 @@ public class WebsiteServiceImpl {
         userAgent.setHandler("image/gif", handlerForBinary);
         userAgent.setHandler("image/jpeg", handlerForBinary);
         userAgent.setHandler("image/png", handlerForBinary);
+        userAgent.setHandler("image/x-icon", handlerForBinary);
 
         userAgent.visit(baseUrl + htmlFile);
 
@@ -77,6 +78,7 @@ public class WebsiteServiceImpl {
         tidy.setQuiet(true);
         tidy.setTidyMark(false);
         tidy.setEscapeCdata(false);
+        tidy.setXHTML(true);
 
         ByteArrayInputStream site = new ByteArrayInputStream(userAgent.doc.innerHTML().getBytes());
         ByteArrayOutputStream output = new ByteArrayOutputStream();

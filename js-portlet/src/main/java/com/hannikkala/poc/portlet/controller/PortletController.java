@@ -66,7 +66,7 @@ public class PortletController {
             contextRoot = root;
         }
 
-        String cacheId = CacheIdUtil.createCacheId(root, "/index.html", contextRoot);
+        String cacheId = CacheIdUtil.createCacheId(root, "/", contextRoot);
 
         Cache cache = cacheManager.getCache("default");
         String cacheSite = cache.get(cacheId, String.class);
@@ -76,7 +76,7 @@ public class PortletController {
         }
 
         try {
-            websiteService.fetchWebsite(root, "/index.html", contextRoot);
+            websiteService.fetchWebsite(root, "/", contextRoot);
         } catch (ResponseException e) {
             _log.error("Page not found.", e);
             return "notfound";
