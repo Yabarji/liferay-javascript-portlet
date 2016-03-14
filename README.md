@@ -134,6 +134,31 @@ __Tips and tricks__
 angular.bootstrap(document.getElementById(portletId), ['mymodule']);
 ```
 
+- Use hash routes to enable portal working as well
+
+**On Angular 1**
+
+```javascript
+angular.module('yourModule').config(function($locationProvider) {
+    $locationProvider.setHtml5Mode(false);
+});
+```
+
+**ReactJS Router**
+
+The trick is done by using **hashHistory** instead of **browserHistory**:
+
+```javascript
+import { Router, Route, hashHistory } from 'react-router';
+
+render((
+    <Router history={hashHistory}>
+        <Route path="/" component="App" />
+        ... Other routes
+    </Router>
+), document.getElementById('reactRootElement'));
+```
+
 #### Resource paths
 
 All resources from *index.html* are mapped as __/js-portlet/p/\<portlet_instance_id\>/path__. You can use variables set to an index page as stated above.
