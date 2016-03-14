@@ -12,7 +12,7 @@ The development process goes more like change, automatic refresh, change, automa
 
 ## Features
 
-* Fetches _index.html_ from external source as [Thymeleaf template](http://www.thymeleaf.org)
+* Fetches _index.html_ from external source as [Thymeleaf template](http://www.thymeleaf.org) or just plain simple HTML file if you don't need parameters.
 * Caches resources from the index page internally for faster accessibility
 * For even faster performance there are support for using CDN (Content Delivery Network)
 * Support for multiple portlets  
@@ -120,21 +120,29 @@ var portletAppContextPath = /*[[${portletAppContextPath}]]*/ '';
 </script>
 ```
 
-__Tips and tricks__
+#### Tips and tricks
 
-- To use multiple portlets on the same page, you might need to dynamically name your root element. Portlet ID that is provided when calling through Portlet will help you. Example:
+##### Use dynamic root element
+
+To use multiple portlets on the same page, you might need to dynamically name your root element. Portlet ID that is provided when calling through Portlet will help you. Example:
  
 ```html
 <div id="myrootelement" th:id="${portletId}></div> 
 ```
 
-- Start your application manually and attach it to your root element. ReactJS works this way by default but in Angular, **don't** use **ng-app** -attribute. Instead use:
+
+##### Start your application manually and attach it to your root element
+
+Start your application manually and attach it to your root element. ReactJS works this way by default but in Angular, **don't** use **ng-app** -attribute. Instead use:
 
 ```javascript
 angular.bootstrap(document.getElementById(portletId), ['mymodule']);
 ```
 
-- Use hash routes to enable portal working as well
+
+##### Use hash routes to enable portal working as well
+
+So application addresses look like _/web/guest/home#/myroute_.
 
 **On Angular 1**
 
@@ -158,6 +166,12 @@ render((
     </Router>
 ), document.getElementById('reactRootElement'));
 ```
+
+
+##### Use stateless REST services. 
+
+It's recommended to use provided JWT tokens to transport user information to REST service. Portlet provides token generation REST endpoint at **/delegate/rest/me**. To configure JWT secret key, edit file **application.properties** inside the portlet application directory **<LIFERAY_HOME>/tomcat-<VERSION>/webapps/js-portlet/WEB-INF/classes**. 
+
 
 #### Resource paths
 
