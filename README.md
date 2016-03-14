@@ -14,6 +14,7 @@ The development process goes more like change, automatic refresh, change, automa
 
 * Fetches _index.html_ from external source as [Thymeleaf template](http://www.thymeleaf.org)
 * Caches resources from the index page internally for faster accessibility
+* For even faster performance there are support for using CDN (Content Delivery Network)
 * Support for multiple portlets  
 * Support for multiple JavaScript applications (as different portlet instances)
 * Support for multiple REST services. Configure *application.json* inside the WAR package
@@ -58,6 +59,8 @@ Configure Portlet as Administrator.
 ![UI Root configured](example/screenshot03_uirootset.png?raw=true "Write page URL on the input field where we can find index.html")
 Write page URL on the input field where we can find index.html.
 
+There are also checkbox to enable/disable so called CDN mode. If you are publishing JavaScript application into a server that can be seen and accessed by your users, you may want to enable this. Basically what it does, is to write resource links (images, JavaScripts and CSS files) to external CDN server instead of proxying them through js-portlet. 
+
 ![Refreshed](example/screenshot04_refreshed.png?raw=true "Portlet will show up after page is refreshed")
 Portlet will show up after page is refreshed.
 
@@ -79,11 +82,12 @@ Go to __example/rest-service__ and run `mvn spring-boot:run`. This will run REST
 
 ## TODO
 
-- [x] ~~Cache fetching for static resources~~
+- [x] ~~Cache fetching for static resources~~ DONE
 - [x] ~~Configurable JWT secret key~~ DONE
 - [ ] Way better error communication
 - [ ] An actual architecture picture
 - [ ] Support for externalized REST configuration
+- [x] ~~CDN support to improve performance. Portlet rewrite paths to external source.~~
 
 ## Application development
 
