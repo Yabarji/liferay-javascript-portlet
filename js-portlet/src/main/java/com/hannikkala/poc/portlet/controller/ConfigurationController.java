@@ -5,6 +5,7 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.ConfigurationAction;
 import com.liferay.portal.kernel.servlet.SessionMessages;
+import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portlet.PortletPreferencesFactoryUtil;
 import com.liferay.portlet.portletconfiguration.util.PortletConfigurationUtil;
@@ -33,6 +34,7 @@ public class ConfigurationController implements ConfigurationAction {
         String portletResource = ParamUtil.getString(actionRequest, "portletResource");
         PortletPreferences prefs = PortletPreferencesFactoryUtil.getPortletSetup(actionRequest, portletResource);
         prefs.setValue("root", actionRequest.getParameter("root"));
+        prefs.setValue("cdnMode", actionRequest.getParameter("cdnMode"));
 
         prefs.store();
 
@@ -50,6 +52,7 @@ public class ConfigurationController implements ConfigurationAction {
         String portletResource = ParamUtil.getString(renderRequest, "portletResource");
         PortletPreferences prefs = PortletPreferencesFactoryUtil.getPortletSetup(renderRequest, portletResource);
         renderRequest.setAttribute("root", prefs.getValue("root", ""));
+        renderRequest.setAttribute("cdnMode", prefs.getValue("cdnMode", "false"));
         return "/WEB-INF/jsp/configuration.jsp";
     }
 }

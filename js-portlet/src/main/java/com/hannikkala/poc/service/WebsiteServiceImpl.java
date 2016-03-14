@@ -1,10 +1,7 @@
 package com.hannikkala.poc.service;
 
 import com.hannikkala.poc.util.CacheIdUtil;
-import com.jaunt.Element;
-import com.jaunt.Elements;
-import com.jaunt.ResponseException;
-import com.jaunt.UserAgent;
+import com.jaunt.*;
 import com.jaunt.util.HandlerForBinary;
 import com.jaunt.util.HandlerForText;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +14,7 @@ import org.w3c.tidy.Tidy;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 /**
  * User: bleed
@@ -35,7 +33,7 @@ public class WebsiteServiceImpl {
     private Cache cache;
 
     @Cacheable(value = "default", key = "#contextRoot + #htmlFile")
-    public String fetchWebsite(String baseUrl, String htmlFile, String contextRoot) throws Exception {
+    public String fetchWebsite(String baseUrl, String htmlFile, String contextRoot) throws ResponseException, NotFound, IOException {
         cache = cacheManager.getCache("default");
         UserAgent userAgent = new UserAgent();
         userAgent.setHandler("text/css", handlerForText);
