@@ -16,7 +16,7 @@
 
     <modules>
         <module>rest-service</module>
-        <module>poc-angular-client</module>
+        <module>angular-client</module>
     </modules>
 
     
