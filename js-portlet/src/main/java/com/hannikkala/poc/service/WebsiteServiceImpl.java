@@ -10,10 +10,7 @@ import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
-import org.w3c.tidy.Tidy;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 /**
@@ -71,7 +68,7 @@ public class WebsiteServiceImpl {
             fetchBinary(userAgent, imgSrc, cacheId);
             img.setAttribute("src", cacheId);
         }
-
+/*
         Tidy tidy = new Tidy();
         tidy.setShowWarnings(false);
         tidy.setMakeClean(true);
@@ -79,6 +76,7 @@ public class WebsiteServiceImpl {
         tidy.setTidyMark(false);
         tidy.setEscapeCdata(false);
         tidy.setXHTML(true);
+        tidy.setForceOutput(true);
 
         ByteArrayInputStream site = new ByteArrayInputStream(userAgent.doc.innerHTML().getBytes());
         ByteArrayOutputStream output = new ByteArrayOutputStream();
@@ -86,10 +84,10 @@ public class WebsiteServiceImpl {
         tidy.parse(site, output);
 
         String out = output.toString().replaceAll("[//]*<!\\[CDATA\\[", "").replaceAll("[//]*]]>", "");
-
+*/
         userAgent.close();
 
-        return out;
+        return userAgent.doc.innerHTML();
     }
 
     public String fetchText(UserAgent ua, String file, String cacheId) throws ResponseException {

@@ -10,7 +10,7 @@
     <context:component-scan base-package="com.hannikkala.poc.portlet"/>
 
     <bean id="cacheTemplateResolver" class="com.hannikkala.poc.thymeleaf.CacheTemplateResolver">
-        <property name="templateMode" value="HTML5"/>
+        <property name="templateMode" value="LEGACYHTML5"/>
         <property name="characterEncoding" value="UTF-8"/>
         <property name="order" value="1"/>
         <property name="cacheName" value="default" />

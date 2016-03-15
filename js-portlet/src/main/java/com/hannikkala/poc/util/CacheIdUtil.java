@@ -23,6 +23,10 @@ public class CacheIdUtil {
         URL url = null;
         try {
             url = new URL(new URL(baseUrl), file);
+            if(file.startsWith("http") && contextRoot.startsWith("http")) {
+                URL contextUrl = new URL(contextRoot);
+                contextRoot = contextUrl.getProtocol() + "://" + contextUrl.getHost();
+            }
         } catch (MalformedURLException e) {
             _log.error("URL: " + baseUrl + file + " is malformed.", e);
         }
