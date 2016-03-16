@@ -184,11 +184,3 @@ Portlet comes with the REST API proxy. REST API's URLs are __/delegate/rest/api/
 #### Fetching JWT token
 
 When you are logged in to Liferay, you can use **/delegate/rest/me** to fetch one. The request must go through Liferay Delegate Servlet (very undocumented feature) to gain access to user that's currently logged in. That's why there must be **/delegate** -prefix on the request.
-
-## Installing non-Maven dependency
-
-Portlet uses [Jaunt API](http://www.jaunt-api.com) to fetch websites and cache them for faster accessibility. Here's how to install the file (provided) into your local Maven repository:
-
-```shell
-mvn install:install-file -Dfile=js-portlet/lib/jaunt1.1.4.jar -DgroupId=com.jaunt-api -DartifactId=jaunt -Dversion=1.1.4 -Dpackaging=jar
-```
