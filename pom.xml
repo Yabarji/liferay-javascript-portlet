@@ -38,6 +38,7 @@
                             <file>js-portlet/lib/jaunt1.1.4.jar</file>
                             <groupId>com.jaunt-api</groupId>
                             <artifactId>jaunt</artifactId>
+                            <packaging>jar</packaging>
                             <version>1.1.4</version>
                         </configuration>
                     </execution>
