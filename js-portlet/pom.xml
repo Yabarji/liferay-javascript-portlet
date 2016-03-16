@@ -60,25 +60,6 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
-			<plugin>
-				<artifactId>maven-install-plugin</artifactId>
-				<version>2.5.2</version>
-				<executions>
-					<execution>
-						<id>install-jaunt</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>install-file</goal>
-						</goals>
-						<configuration>
-							<file>lib/jaunt1.1.4.jar</file>
-							<groupId>com.jaunt-api</groupId>
-							<artifactId>jaunt</artifactId>
-							<version>1.1.4</version>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
