@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * User: bleed
+ * @author Tommi Hännikkälä <tommi@hannikkala.com>
  * Date: 25/02/16
  * Time: 12:36
  */
