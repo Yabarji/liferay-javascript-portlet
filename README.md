@@ -172,7 +172,6 @@ render((
 
 It's recommended to use provided JWT tokens to transport user information to REST service. Portlet provides token generation REST endpoint at **/delegate/rest/me**. To configure JWT secret key, edit file **application.properties** inside the portlet application directory **\<LIFERAY_HOME\>/tomcat-\<VERSION\>/webapps/js-portlet/WEB-INF/classes**. 
 
-
 #### Resource paths
 
 All resources from *index.html* are mapped as __/js-portlet/p/\<portlet_instance_id\>/path__. You can use variables set to an index page as stated above.
