@@ -31,7 +31,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * User: bleed
+ * @author Tommi Hännikkälä <tommi@hannikkala.com>
  * Date: 11/03/16
  * Time: 12:05
  */
@@ -72,7 +72,7 @@ public class ProxyController {
         return matcher.group(1);
     }
 
-    private javax.portlet.PortletPreferences getPortletPreferencesByPortletId(String portletId) throws SystemException, PortalException {
+    protected javax.portlet.PortletPreferences getPortletPreferencesByPortletId(String portletId) throws SystemException, PortalException {
         DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(PortletPreferences.class)
                 .add(PropertyFactoryUtil.forName("portletId").eq(portletId));
         List<PortletPreferences> list = PortletPreferencesLocalServiceUtil.dynamicQuery(dynamicQuery);

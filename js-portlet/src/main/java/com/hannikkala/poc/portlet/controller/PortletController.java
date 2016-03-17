@@ -26,7 +26,7 @@ import javax.portlet.RenderResponse;
 import java.io.IOException;
 
 /**
- * User: bleed
+ * @author Tommi Hännikkälä <tommi@hannikkala.com>
  * Date: 25/02/16
  * Time: 18:55
  */

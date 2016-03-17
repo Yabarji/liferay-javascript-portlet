@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * User: bleed
+ * @author Tommi Hännikkälä <tommi@hannikkala.com>
  * Date: 11/03/16
  * Time: 13:59
  */
@@ -42,11 +42,5 @@ public class RequestConfigServiceImpl implements InitializingBean {
         ObjectMapper mapper = new ObjectMapper();
         RequestConfigList list = mapper.readValue(jsonFile.getFile(), RequestConfigList.class);
         configSet.addAll(list.getConfigurations());
-
-        /*for(Map<String, String> mapping : mappings) {
-            for (Map.Entry<String, String> entry : mapping.entrySet()) {
-                configSet.add(new RequestConfig(entry.getKey(), entry.getValue()));
-            }
-        }*/
     }
 }

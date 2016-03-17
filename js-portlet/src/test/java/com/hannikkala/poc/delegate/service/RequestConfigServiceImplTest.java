@@ -2,6 +2,7 @@ package com.hannikkala.poc.delegate.service;
 
 import com.hannikkala.poc.RootConfig;
 import com.hannikkala.poc.TestConfig;
+import com.hannikkala.poc.delegate.config.RequestConfig;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,13 +21,16 @@ import java.util.Map;
 import static org.junit.Assert.*;
 
 /**
- * User: bleed
+ * @author Tommi Hännikkälä <tommi@hannikkala.com>
  * Date: 11/03/16
  * Time: 14:22
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {RootConfig.class, TestConfig.class})
 public class RequestConfigServiceImplTest {
+
+    @Autowired
+    private RequestConfigServiceImpl requestConfigService;
 
     @Before
     public void setUp() throws Exception {
@@ -40,6 +44,18 @@ public class RequestConfigServiceImplTest {
 
     @Test
     public void testFindConfiguration() throws Exception {
-        System.out.println("test");
+        RequestConfig configuration = requestConfigService.findConfiguration("/rest/api/todo");
+        assertNotNull("Configuration for todo REST must not be null.", configuration);
+    }
+
+    @Test
+    public void testFindConfigurationSubpath() throws Exception {
+        RequestConfig configuration = requestConfigService.findConfiguration("/rest/api/todo/123/user");
+        assertNotNull("Configuration for todo REST must not be null.", configuration);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void testFindConfigurationMissing() throws Exception {
+        requestConfigService.findConfiguration("/doesnotexist");
     }
 }

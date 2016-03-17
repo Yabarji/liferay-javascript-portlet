@@ -8,7 +8,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 /**
- * User: bleed
+ * @author Tommi Hännikkälä <tommi@hannikkala.com>
  * Date: 10/03/16
  * Time: 11:28
  */

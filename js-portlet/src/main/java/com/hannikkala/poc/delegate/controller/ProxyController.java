@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.Enumeration;
 
 /**
- * User: bleed
+ * @author Tommi Hännikkälä <tommi@hannikkala.com>
  * Date: 02/03/16
  * Time: 21:56
  */
