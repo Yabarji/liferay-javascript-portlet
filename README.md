@@ -162,7 +162,7 @@ import { Router, Route, hashHistory } from 'react-router';
 render((
     <Router history={hashHistory}>
         <Route path="/" component="App" />
-        ... Other routes
+        // ... Other routes
     </Router>
 ), document.getElementById('reactRootElement'));
 ```
@@ -170,7 +170,7 @@ render((
 
 ##### Use stateless REST services. 
 
-It's recommended to use provided JWT tokens to transport user information to REST service. Portlet provides token generation REST endpoint at **/delegate/rest/me**. To configure JWT secret key, edit file **application.properties** inside the portlet application directory **<LIFERAY_HOME>/tomcat-<VERSION>/webapps/js-portlet/WEB-INF/classes**. 
+It's recommended to use provided JWT tokens to transport user information to REST service. Portlet provides token generation REST endpoint at **/delegate/rest/me**. To configure JWT secret key, edit file **application.properties** inside the portlet application directory **\<LIFERAY_HOME\>/tomcat-\<VERSION\>/webapps/js-portlet/WEB-INF/classes**. 
 
 
 #### Resource paths
