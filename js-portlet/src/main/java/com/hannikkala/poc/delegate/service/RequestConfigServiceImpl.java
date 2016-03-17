@@ -2,6 +2,7 @@ package com.hannikkala.poc.delegate.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.hannikkala.poc.delegate.config.RequestConfig;
 import com.hannikkala.poc.delegate.config.RequestConfigList;
 import org.springframework.beans.factory.InitializingBean;
@@ -38,8 +39,8 @@ public class RequestConfigServiceImpl implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        Resource jsonFile = new ClassPathResource("application.json");
-        ObjectMapper mapper = new ObjectMapper();
+        Resource jsonFile = new ClassPathResource("application.yml");
+        ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         RequestConfigList list = mapper.readValue(jsonFile.getFile(), RequestConfigList.class);
         configSet.addAll(list.getConfigurations());
     }
