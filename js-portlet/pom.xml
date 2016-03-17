@@ -66,12 +66,12 @@
                 <executions>
                     <execution>
                         <id>install-jaunt</id>
-                        <phase>post-clean</phase>
+                        <phase>pre-clean</phase>
                         <goals>
                             <goal>install-file</goal>
                         </goals>
                         <configuration>
-                            <file>js-portlet/lib/jaunt1.1.4.jar</file>
+                            <file>lib/jaunt1.1.4.jar</file>
                             <groupId>com.jaunt-api</groupId>
                             <artifactId>jaunt</artifactId>
                             <packaging>jar</packaging>
