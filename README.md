@@ -120,31 +120,11 @@ var portletAppContextPath = /*[[${portletAppContextPath}]]*/ '';
 </script>
 ```
 
-#### Tips and tricks
+#### Using different JavaScript libraries
 
-##### Use dynamic root element
+##### AngularJS 1
 
-To use multiple portlets on the same page, you might need to dynamically name your root element. Portlet ID that is provided when calling through Portlet will help you. Example:
- 
-```html
-<div id="myrootelement" th:id="${portletId}></div> 
-```
-
-
-##### Start your application manually and attach it to your root element
-
-Start your application manually and attach it to your root element. ReactJS works this way by default but in Angular, **don't** use **ng-app** -attribute. Instead use:
-
-```javascript
-angular.bootstrap(document.getElementById(portletId), ['mymodule']);
-```
-
-
-##### Use hash routes to enable portal working as well
-
-So application addresses look like _/web/guest/home#/myroute_.
-
-**On Angular 1**
+- Use hash paths:
 
 ```javascript
 angular.module('yourModule').config(function($locationProvider) {
@@ -152,6 +132,37 @@ angular.module('yourModule').config(function($locationProvider) {
 });
 ```
 
+- `angular.bootstrap` manually into an element
+
+```javascript
+angular.bootstrap(document.getElementById(rootElementId), ['mymodule']);
+```
+
+> Note! Don't use **ng-app**.
+
+- Use REST URL as constant
+
+```javascript
+var ajaxURL = /*[[${ajaxURL}]]*/ "http://localhost:8081/";
+app.constant('ajaxUrl', ajaxURL);
+
+app.service('MyService', function(ajaxUrl, $http, $q) {
+    return {
+          list: function() {
+            var deferred = $q.defer();
+            $http.get(ajaxUrl + "api/todo").then(function(todos) {
+              deferred.resolve(todos.data);
+            });
+            return deferred.promise;
+          }
+    }
+});
+```
+
+##### ReactJS
+
+- Use hash URLs
+ 
 **ReactJS Router**
 
 The trick is done by using **hashHistory** instead of **browserHistory**:
@@ -167,6 +178,15 @@ render((
 ), document.getElementById('reactRootElement'));
 ```
 
+#### Tips and tricks
+
+##### Use dynamic root element
+
+To use multiple portlets on the same page, you might need to dynamically name your root element. Portlet ID that is provided when calling through Portlet will help you. Example:
+ 
+```html
+<div id="myrootelement" th:id="${portletId}></div> 
+```
 
 ##### Use stateless REST services. 
 
