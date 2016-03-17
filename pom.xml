@@ -3,7 +3,7 @@
 	<groupId>com.hannikkala.liferay</groupId>
 	<artifactId>js-liferay-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 	<modules>
         <module>example</module>
 		<module>js-portlet</module>
