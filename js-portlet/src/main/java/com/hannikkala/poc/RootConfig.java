@@ -21,7 +21,7 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import java.util.Arrays;
 
 /**
- * @author Tommi Hännikkälä <tommi@hannikkala.com>
+ * @author Tommi Hännikkälä tommi@hannikkala.com
  * Date: 29/02/16
  * Time: 23:05
  */
