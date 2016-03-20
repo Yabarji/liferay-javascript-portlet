@@ -31,4 +31,12 @@ public class CacheIdUtilTest {
                 "http://jdanyow.github.io/aurelia-examples");
         assertEquals("http://jdanyow.github.io/aurelia-examples/jspm_packages/npm/font-awesome@4.3.0/css/font-awesome.min.css", cacheId);
     }
+
+    @Test
+    public void testCreateCacheIdAbsoluteURLWithPort() {
+        String cacheId = CacheIdUtil.createCacheId("http://localhost:3000/",
+                "http://localhost:3000/font-awesome@4.3.0/css/font-awesome.min.css",
+                "http://localhost:3000");
+        assertEquals("http://localhost:3000/font-awesome@4.3.0/css/font-awesome.min.css", cacheId);
+    }
 }
