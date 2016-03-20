@@ -1,8 +1,0 @@
-{
-  "rest": [
-    {
-      "pattern": "/rest/api/todo/**",
-      "location": "http://localhost:8081"
-    }
-  ]
-}

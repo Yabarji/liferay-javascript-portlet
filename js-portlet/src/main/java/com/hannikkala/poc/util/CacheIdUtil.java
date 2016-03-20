@@ -25,7 +25,7 @@ public class CacheIdUtil {
             url = new URL(new URL(baseUrl), file);
             if(file.startsWith("http") && contextRoot.startsWith("http")) {
                 URL contextUrl = new URL(contextRoot);
-                contextRoot = contextUrl.getProtocol() + "://" + contextUrl.getHost();
+                contextRoot = contextUrl.getProtocol() + "://" + contextUrl.getHost() + (contextUrl.getPort() != -1 ? ":" + contextUrl.getPort() : "");
             }
         } catch (MalformedURLException e) {
             _log.error("URL: " + baseUrl + file + " is malformed.", e);

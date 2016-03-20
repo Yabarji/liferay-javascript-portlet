@@ -25,24 +25,27 @@ The development process goes more like change, automatic refresh, change, automa
 You must have JavaScript application running somewhere for Liferay to find it. Optionally you may have REST service running as well.
 
 1. Install portlet. Drop the portlet into Liferay deploy directory.
-    - There are **application.json** inside the portlet to set REST API addresses by URL patterns
+    - There are **application.yml** inside the portlet to set REST API addresses by URL patterns
 2. Drag and drop portlet into some page as an administrator. Portlet can be found under *JavaScript* -> *JavaScript Portlet*.
 3. Configure portlet. Set the URL where we can fetch index.html (See screen shots below).
 
 #### Configuring REST services
 
-Find **application.json** inside WAR package. There's already configured a single REST API to be used with an example project. It looks like following:
+Find **application.yml** inside WAR package. There's already configured a single REST API to be used with an example project. It looks like following:
 
-```json
-{
-  "rest": [
-    {
-      "pattern": "/rest/api/todo/**",
-      "location": "http://localhost:8081"
-    }
-  ]
-}
+```yaml
+rest:
+  - pattern: /rest/api/todo/**
+    location: http://localhost:8081
 ```
+
+**Externalizing REST configuration**
+
+You may want to put REST configuration away from web application directory. For this purpose there's a mechanism for that: set system property `jsportlet.rest.resource` on Spring resource format (default value is `classpath:application.yml`). 
+ 
+**Examples:**
+- In Tomcat environment you can modify `CATALINA_OPTS`-variable in *setenv.sh* or *setenv.bat*. Add `-Djsportlet.rest.resource=<resource>`
+- Resource syntax examples can be found from [Spring Framework documentation](http://docs.spring.io/autorepo/docs/spring/current/spring-framework-reference/htmlsingle/#resources-resourceloader) 
 
 > Note! Access URL is **/delegate/rest/api/** but while requesting proxy through Liferay's Delegate Servlet, **/delegate** gets stripped off.
 
@@ -198,7 +201,7 @@ All resources from *index.html* are mapped as __/js-portlet/p/\<portlet_instance
 
 #### REST Proxy
 
-Portlet comes with the REST API proxy. REST API's URLs are __/delegate/rest/api/\<mapping\>__. This delegate Servlet uses classpath resource **application.json** to find out where to forward the request. 
+Portlet comes with the REST API proxy. REST API's URLs are __/delegate/rest/api/\<mapping\>__. This delegate Servlet uses classpath resource **application.yml** to find out where to forward the request. 
 
 #### Fetching JWT token
 
