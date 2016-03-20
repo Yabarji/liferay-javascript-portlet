@@ -1,13 +1,15 @@
 package com.hannikkala.poc.delegate.service;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.hannikkala.poc.delegate.config.RequestConfig;
 import com.hannikkala.poc.delegate.config.RequestConfigList;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -28,6 +30,12 @@ public class RequestConfigServiceImpl implements InitializingBean {
 
     private final Set<RequestConfig> configSet = new HashSet<>();
 
+    @Autowired
+    private ResourceLoader resourceLoader;
+
+    @Autowired
+    private Environment env;
+
     public RequestConfig findConfiguration(String path) {
         for(RequestConfig config : configSet) {
             if(config.matches(path)) {
@@ -39,7 +47,8 @@ public class RequestConfigServiceImpl implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        Resource jsonFile = new ClassPathResource("application.yml");
+        String restResource = env.getProperty("jsportlet.rest.resource", "classpath:application.properties");
+        Resource jsonFile = resourceLoader.getResource(restResource);
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         RequestConfigList list = mapper.readValue(jsonFile.getFile(), RequestConfigList.class);
         configSet.addAll(list.getConfigurations());

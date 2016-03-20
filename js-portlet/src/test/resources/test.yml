@@ -1,0 +1,5 @@
+rest:
+  - pattern: /rest/api/todo/**
+    location: http://localhost:8081
+  - pattern: /rest/api/test/**
+    location: http://localhost:3030

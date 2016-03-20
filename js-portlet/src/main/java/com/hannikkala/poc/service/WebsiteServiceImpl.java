@@ -68,23 +68,7 @@ public class WebsiteServiceImpl {
             fetchBinary(userAgent, imgSrc, cacheId);
             img.setAttribute("src", cacheId);
         }
-/*
-        Tidy tidy = new Tidy();
-        tidy.setShowWarnings(false);
-        tidy.setMakeClean(true);
-        tidy.setQuiet(true);
-        tidy.setTidyMark(false);
-        tidy.setEscapeCdata(false);
-        tidy.setXHTML(true);
-        tidy.setForceOutput(true);
 
-        ByteArrayInputStream site = new ByteArrayInputStream(userAgent.doc.innerHTML().getBytes());
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-
-        tidy.parse(site, output);
-
-        String out = output.toString().replaceAll("[//]*<!\\[CDATA\\[", "").replaceAll("[//]*]]>", "");
-*/
         userAgent.close();
 
         return userAgent.doc.innerHTML();

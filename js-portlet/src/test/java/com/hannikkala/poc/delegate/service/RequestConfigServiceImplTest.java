@@ -13,6 +13,7 @@ import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
@@ -27,6 +28,7 @@ import static org.junit.Assert.*;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {RootConfig.class, TestConfig.class})
+@TestPropertySource(properties = {"jsportlet.rest.resource: classpath:test.yml"})
 public class RequestConfigServiceImplTest {
 
     @Autowired
@@ -52,6 +54,12 @@ public class RequestConfigServiceImplTest {
     public void testFindConfigurationSubpath() throws Exception {
         RequestConfig configuration = requestConfigService.findConfiguration("/rest/api/todo/123/user");
         assertNotNull("Configuration for todo REST must not be null.", configuration);
+    }
+
+    @Test
+    public void testFindConfigurationForTestAPI() throws Exception {
+        RequestConfig configuration = requestConfigService.findConfiguration("/rest/api/test");
+        assertNotNull("Configuration for test REST must not be null.", configuration);
     }
 
     @Test(expected = RuntimeException.class)
