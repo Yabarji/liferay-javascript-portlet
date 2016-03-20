@@ -89,7 +89,7 @@ Go to __example/rest-service__ and run `mvn spring-boot:run`. This will run REST
 - [x] ~~Configurable JWT secret key~~ DONE
 - [ ] Way better error communication
 - [ ] An actual architecture picture
-- [ ] Support for externalized REST configuration
+- [x] ~~Support for externalized REST configuration~~
 - [x] ~~CDN support to improve performance. Portlet rewrite paths to external source.~~
 
 ## Application development
