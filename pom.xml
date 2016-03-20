@@ -14,9 +14,9 @@
 		<liferay.version>6.2.1</liferay.version>
 	</properties>
 	<scm>
-		<connection>scm:git:https://github.com/hannikkala/poc-js-liferay.git</connection>
-		<developerConnection>scm:git:git@github.com:hannikkala/poc-js-liferay.git</developerConnection>
-		<url>https://github.com/hannikkala/poc-js-liferay</url>
+		<connection>scm:git:https://github.com/hannikkala/liferay-javascript-portlet.git</connection>
+		<developerConnection>scm:git:git@github.com:hannikkala/liferay-javascript-portlet.git</developerConnection>
+		<url>https://github.com/hannikkala/liferay-javascript-portlet</url>
 		<tag>HEAD</tag>
 	</scm>
 	<build>
