@@ -13,6 +13,7 @@
     <groupId>com.hannikkala.liferay</groupId>
     <artifactId>example</artifactId>
     <packaging>pom</packaging>
+    <name>Example parent</name>
 
     <modules>
         <module>rest-service</module>

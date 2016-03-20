@@ -4,6 +4,7 @@
 	<artifactId>js-liferay-parent</artifactId>
 	<packaging>pom</packaging>
 	<version>1.2-SNAPSHOT</version>
+    <name>Liferay JavaScript portlet parent</name>
 	<modules>
         <module>example</module>
 		<module>js-portlet</module>
@@ -12,6 +13,12 @@
 		<liferay.maven.plugin.version>6.2.1</liferay.maven.plugin.version>
 		<liferay.version>6.2.1</liferay.version>
 	</properties>
+	<scm>
+		<connection>scm:git:https://github.com/hannikkala/poc-js-liferay.git</connection>
+		<developerConnection>scm:git:git@github.com:hannikkala/poc-js-liferay.git</developerConnection>
+		<url>https://github.com/hannikkala/poc-js-liferay</url>
+		<tag>HEAD</tag>
+	</scm>
 	<build>
 		<plugins>
 			<plugin>
@@ -23,6 +30,56 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.4.1</version>
+				<configuration>
+					<useReleaseProfile>false</useReleaseProfile>
+					<releaseProfiles>release</releaseProfiles>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
+
+    <distributionManagement>
+        <repository>
+            <id>bintray</id>
+            <url>https://api.bintray.com/maven/hannikkala/maven/js-liferay</url>
+        </repository>
+    </distributionManagement>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.0.0</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.10.3</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

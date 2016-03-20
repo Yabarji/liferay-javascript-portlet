@@ -22,7 +22,7 @@
 		<spring.version>4.2.4.RELEASE</spring.version>
 	</properties>	
 	<build>
-        <finalName>${artifactId}</finalName>
+        <finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>com.liferay.maven.plugins</groupId>
