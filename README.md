@@ -39,6 +39,14 @@ rest:
     location: http://localhost:8081
 ```
 
+**Externalizing REST configuration**
+
+You may want to put REST configuration away from web application directory. For this purpose there's a mechanism for that: set system property `jsportlet.rest.resource` on Spring resource format (default value is `classpath:application.yml`). 
+ 
+**Examples:**
+- In Tomcat environment you can modify `CATALINA_OPTS`-variable in *setenv.sh* or *setenv.bat*. Add `-Djsportlet.rest.resource=<resource>`
+- Resource syntax examples can be found from [Spring Framework documentation](http://docs.spring.io/autorepo/docs/spring/current/spring-framework-reference/htmlsingle/#resources-resourceloader) 
+
 > Note! Access URL is **/delegate/rest/api/** but while requesting proxy through Liferay's Delegate Servlet, **/delegate** gets stripped off.
 
 > Note! Background service sees only **/api/todo** part of the request. 
