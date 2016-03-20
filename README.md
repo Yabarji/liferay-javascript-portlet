@@ -17,7 +17,7 @@ The development process goes more like change, automatic refresh, change, automa
 * For even faster performance there are support for using CDN (Content Delivery Network)
 * Support for multiple portlets  
 * Support for multiple JavaScript applications (as different portlet instances)
-* Support for multiple REST services. Configure *application.json* inside the WAR package
+* Support for multiple REST services. Configure *application.yml* inside the WAR package
 * Support for JWT tokens. Get user token from URL __/delegate/rest/me__
 
 ## Quickstart
