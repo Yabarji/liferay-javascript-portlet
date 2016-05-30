@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * @author Tommi Hännikkälä <tommi@hannikkala.com>
+ * @author Tommi Hännikkälä tommi@hannikkala.com
  * Date: 25/02/16
  * Time: 14:54
  */

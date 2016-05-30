@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.util.AntPathMatcher;
 
 /**
- * @author Tommi Hännikkälä <tommi@hannikkala.com>
+ * @author Tommi Hännikkälä tommi@hannikkala.com
  * Date: 11/03/16
  * Time: 13:53
  */

@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
- * @author Tommi Hännikkälä <tommi@hannikkala.com>
+ * @author Tommi Hännikkälä tommi@hannikkala.com
  * Date: 25/02/16
  * Time: 14:36
  */

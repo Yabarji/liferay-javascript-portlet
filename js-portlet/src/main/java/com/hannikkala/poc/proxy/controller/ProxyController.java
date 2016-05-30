@@ -31,7 +31,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @author Tommi Hännikkälä <tommi@hannikkala.com>
+ * @author Tommi Hännikkälä tommi@hannikkala.com
  * Date: 11/03/16
  * Time: 12:05
  */

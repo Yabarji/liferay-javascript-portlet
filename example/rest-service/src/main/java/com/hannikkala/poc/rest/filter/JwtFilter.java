@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @author Tommi Hännikkälä <tommi@hannikkala.com>
+ * @author Tommi Hännikkälä tommi@hannikkala.com
  * Date: 12/02/16
  * Time: 03:42
  */

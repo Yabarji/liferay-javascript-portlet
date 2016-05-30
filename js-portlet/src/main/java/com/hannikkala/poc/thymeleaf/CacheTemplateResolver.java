@@ -14,7 +14,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 /**
- * @author Tommi Hännikkälä <tommi@hannikkala.com>
+ * @author Tommi Hännikkälä tommi@hannikkala.com
  * Date: 11/03/16
  * Time: 09:37
  */
