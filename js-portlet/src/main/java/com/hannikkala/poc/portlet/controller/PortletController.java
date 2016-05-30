@@ -2,8 +2,6 @@ package com.hannikkala.poc.portlet.controller;
 
 import com.hannikkala.poc.service.WebsiteServiceImpl;
 import com.hannikkala.poc.util.CacheIdUtil;
-import com.jaunt.NotFound;
-import com.jaunt.ResponseException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
@@ -56,6 +54,7 @@ public class PortletController {
         PortletPreferences preferences = request.getPreferences();
         String root = preferences.getValue("root", null);
         boolean cdnMode = GetterUtil.getBoolean(preferences.getValue("cdnMode", "false"));
+        boolean developerMode = GetterUtil.getBoolean(preferences.getValue("developerMode", "false"));
 
         if(root == null) {
             return "notconfigured";
@@ -71,20 +70,15 @@ public class PortletController {
         Cache cache = cacheManager.getCache("default");
         String cacheSite = cache.get(cacheId, String.class);
 
-        if(cacheSite != null) {
+        if(cacheSite != null && !developerMode) {
             return "cache:" + cacheId;
         }
 
         try {
             websiteService.fetchWebsite(root, "/", contextRoot);
-        } catch (ResponseException e) {
+        } catch (IOException e) {
             _log.error("Page not found.", e);
             return "notfound";
-        } catch (NotFound notFound) {
-            _log.error("Attribute not found", notFound);
-            return "notfound";
-        } catch (IOException e) {
-            // Ignored
         }
 
         return "cache:" + cacheId;

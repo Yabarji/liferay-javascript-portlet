@@ -18,6 +18,10 @@
         <aui:input type="checkbox" label="" name="cdnMode" value='<%=GetterUtil.getBoolean(request.getAttribute("cdnMode"), false)%>' />
     </div>
     <div>
+        <label>Enable developer mode? (disables cache)</label>
+        <aui:input type="checkbox" label="" name="developerMode" value='<%=GetterUtil.getBoolean(request.getAttribute("developerMode"), false)%>' />
+    </div>
+    <div>
         <input type="button" value="Save" onClick="submitForm(document.<portlet:namespace />fm);" />
     </div>
     <div>

@@ -35,6 +35,7 @@ public class ConfigurationController implements ConfigurationAction {
         PortletPreferences prefs = PortletPreferencesFactoryUtil.getPortletSetup(actionRequest, portletResource);
         prefs.setValue("root", actionRequest.getParameter("root"));
         prefs.setValue("cdnMode", actionRequest.getParameter("cdnMode"));
+        prefs.setValue("developerMode", actionRequest.getParameter("developerMode"));
 
         prefs.store();
 
@@ -53,6 +54,7 @@ public class ConfigurationController implements ConfigurationAction {
         PortletPreferences prefs = PortletPreferencesFactoryUtil.getPortletSetup(renderRequest, portletResource);
         renderRequest.setAttribute("root", prefs.getValue("root", ""));
         renderRequest.setAttribute("cdnMode", prefs.getValue("cdnMode", "false"));
+        renderRequest.setAttribute("developerMode", prefs.getValue("developerMode", "false"));
         return "/WEB-INF/jsp/configuration.jsp";
     }
 }

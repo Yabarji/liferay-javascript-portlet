@@ -62,7 +62,9 @@ Configure Portlet as Administrator.
 ![UI Root configured](example/screenshot03_uirootset.png?raw=true "Write page URL on the input field where we can find index.html")
 Write page URL on the input field where we can find index.html.
 
-There are also checkbox to enable/disable so called CDN mode. If you are publishing JavaScript application into a server that can be seen and accessed by your users, you may want to enable this. Basically what it does, is to write resource links (images, JavaScripts and CSS files) to external CDN server instead of proxying them through js-portlet. 
+There are also checkbox to enable/disable so called CDN mode. If you are publishing JavaScript application into a server that can be seen and accessed by your users, you may want to enable this. Basically what it does, is to write resource links (images, JavaScripts and CSS files) to external CDN server instead of proxying them through js-portlet.
+
+On bottom of the configuration page, there is a checkbox for enabling/disabling developer mode. Basically this means that application does not go to cache.
 
 ![Refreshed](example/screenshot04_refreshed.png?raw=true "Portlet will show up after page is refreshed")
 Portlet will show up after page is refreshed.
