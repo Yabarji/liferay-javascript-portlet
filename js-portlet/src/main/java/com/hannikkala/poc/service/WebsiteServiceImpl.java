@@ -11,7 +11,6 @@ import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +33,6 @@ public class WebsiteServiceImpl {
 
     private static final Log log = LogFactoryUtil.getLog(WebsiteServiceImpl.class);
 
-    @Cacheable(value = "default", key = "#contextRoot + #htmlFile")
     public String fetchWebsite(String baseUrl, String htmlFile, String contextRoot) throws IOException {
         cache = cacheManager.getCache("default");
         Document document = Jsoup.connect(baseUrl + htmlFile).get();
@@ -62,7 +60,11 @@ public class WebsiteServiceImpl {
             img.attr("src", cacheId);
         }
 
-        return document.outerHtml();
+        String content = document.outerHtml();
+        String cacheId = CacheIdUtil.createCacheId(baseUrl, htmlFile, contextRoot);
+        cache.put(cacheId, content);
+
+        return content;
     }
 
     public String fetchText(String file, String cacheId) {
