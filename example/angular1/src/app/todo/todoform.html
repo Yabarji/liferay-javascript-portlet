@@ -1,0 +1,13 @@
+
+<div class="todo-form">
+    <h3 ng-if="!$ctrl.todo.id">Create new todo</h3>
+    <h3 ng-if="$ctrl.todo.id">Edit todo</h3>
+    <form ng-model="$ctrl.todo" ng-submit="$ctrl.saveTodo($ctrl.todo)">
+        <label>Title</label>
+        <input id="title" type="text" ng-model="$ctrl.todo.title" />
+
+        <button type="submit">Save</button>
+    </form>
+
+    <a ui-sref="app.listTodo">Back to list</a>
+</div>

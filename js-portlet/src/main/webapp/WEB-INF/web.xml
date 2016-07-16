@@ -17,7 +17,7 @@
          fully-qualified @Configuration classes -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>com.hannikkala.poc.RootConfig</param-value>
+        <param-value>com.hannikkala.jsliferay.RootConfig</param-value>
     </context-param>
 
     <servlet>
@@ -35,28 +35,28 @@
         <servlet-class>com.liferay.portal.kernel.servlet.PortalDelegateServlet</servlet-class>
         <init-param>
             <param-name>servlet-class</param-name>
-            <param-value>org.springframework.web.servlet.DispatcherServlet</param-value>
+            <param-value>com.hannikkala.jsliferay.servlet.ProxyServlet</param-value>
         </init-param>
         <init-param>
             <param-name>sub-context</param-name>
             <param-value>rest</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
+        <async-supported>true</async-supported>
     </servlet>
 
     <servlet>
-        <servlet-name>proxy</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <servlet-name>me</servlet-name>
+        <servlet-class>com.liferay.portal.kernel.servlet.PortalDelegateServlet</servlet-class>
+        <init-param>
+            <param-name>servlet-class</param-name>
+            <param-value>org.springframework.web.servlet.DispatcherServlet</param-value>
+        </init-param>
+        <init-param>
+            <param-name>sub-context</param-name>
+            <param-value>user</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
     </servlet>
-
-    <servlet-mapping>
-        <servlet-name>proxy</servlet-name>
-        <url-pattern>/p/*</url-pattern>
-    </servlet-mapping>
-    
-    <servlet-mapping>
-        <servlet-name>rest</servlet-name>
-        <url-pattern>/api/*</url-pattern>
-    </servlet-mapping>
 
 </web-app>

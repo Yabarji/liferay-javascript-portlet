@@ -7,9 +7,9 @@
               http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
        ">
 
-    <context:component-scan base-package="com.hannikkala.poc.portlet"/>
+    <context:component-scan base-package="com.hannikkala.jsliferay.portlet"/>
 
-    <bean id="cacheTemplateResolver" class="com.hannikkala.poc.thymeleaf.CacheTemplateResolver">
+    <bean id="cacheTemplateResolver" class="com.hannikkala.jsliferay.thymeleaf.CacheTemplateResolver">
         <property name="templateMode" value="LEGACYHTML5"/>
         <property name="characterEncoding" value="UTF-8"/>
         <property name="order" value="1"/>

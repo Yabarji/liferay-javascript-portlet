@@ -1,0 +1,24 @@
+<table class="todo-list" ng-if="$ctrl.todos && $ctrl.todos.length > 0">
+    <tr ng-repeat="todo in $ctrl.todos">
+        <td>
+            [
+            <a ng-click="$ctrl.removeTodo(todo)">Remove </a> |
+            <a ui-sref="app.editTodo({id: todo.id})">Edit</a>
+            ]
+        </td>
+        <td>
+            {{todo.title}}
+        </td>
+        <td>
+            <input type="checkbox" ng-model="todo.done" />
+        </td>
+    </tr>
+</table>
+
+<div class="todo-content" ng-if="!$ctrl.todos || $ctrl.todos.length == 0">
+    No Todos created.
+</div>
+
+<div class="todo-content" ng-if="$ctrl.isLoggedIn">
+    <a ui-sref="app.addTodo">Create new Todo</a>
+</div>

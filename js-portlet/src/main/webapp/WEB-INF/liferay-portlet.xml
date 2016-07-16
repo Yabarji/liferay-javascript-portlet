@@ -5,7 +5,7 @@
 	<portlet>
 		<portlet-name>js-portlet</portlet-name>
 		<icon>/icon.png</icon>
-		<configuration-action-class>com.hannikkala.poc.portlet.controller.ConfigurationController</configuration-action-class>
+		<configuration-action-class>com.hannikkala.jsliferay.portlet.controller.ConfigurationController</configuration-action-class>
 		<instanceable>true</instanceable>
 	</portlet>
 	<role-mapper>

@@ -9,11 +9,11 @@
 	<parent>
 		<groupId>com.hannikkala.liferay</groupId>
 		<artifactId>js-liferay-parent</artifactId>
-		<version>1.4-SNAPSHOT</version>
+		<version>2.0-SNAPSHOT</version>
 	</parent>
 	<properties>
-		<liferay.version>6.2.1</liferay.version>
-		<liferay.maven.plugin.version>6.2.1</liferay.maven.plugin.version>
+		<liferay.version>6.2.5</liferay.version>
+		<liferay.maven.plugin.version>6.2.10.11</liferay.maven.plugin.version>
 		<liferay.maven.liferay.root>/Users/bleed/Downloads/liferay-portal-6.2-ce-ga2</liferay.maven.liferay.root>
 		<liferay.auto.deploy.dir>${liferay.maven.liferay.root}/deploy</liferay.auto.deploy.dir>
 		<liferay.app.server.deploy.dir>${liferay.maven.liferay.root}/tomcat-7.0.42/webapps</liferay.app.server.deploy.dir>
@@ -136,6 +136,11 @@
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.5.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-proxy</artifactId>
+			<version>9.0.7.v20131107</version>
 		</dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

@@ -1,0 +1,18 @@
+package com.hannikkala.jsliferay.rest.repository;
+
+import com.hannikkala.jsliferay.rest.domain.Todo;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * @author Tommi Hännikkälä tommi@hannikkala.com
+ * Date: 25/02/16
+ * Time: 14:54
+ */
+@Repository
+public interface TodoRepository extends JpaRepository<Todo, Long> {
+
+    List<Todo> findByUsername(String username);
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <base href="/" th:href="${portletFriendlyUrl} + ${'/'}">
+    <meta charset="utf-8">
+    <title>FountainJS</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+  
+    <!-- build:css(.tmp) index.css -->
+    <link rel="stylesheet" href="index.css"></link>
+    <!-- endbuild -->
+  </head>
+
+  <script type="text/javascript" th:inline="javascript">
+    window['angular1'] = {
+      ajaxURL: /*[[${ajaxURL}]]*/ "http://localhost:8081/",
+      isStandalone: /*[[${standalone}]]*/ true,
+      authenticatedUser: /*[[${authenticatedUser}]]*/ "anonymous",
+      portletId: /*[[${portletId}]]*/ 'app',
+      portletAppContextPath: /*[[${portletAppContextPath}]]*/ ''
+    };
+  </script>
+
+  <body ng-app="app">
+    <ui-view></ui-view>
+  </body>
+
+  <!-- build:js(.tmp) index.js -->
+  <script src="jspm_packages/system.js"></script>
+  <script src="jspm.browser.js"></script>
+  <script src="jspm.config.js"></script>
+
+  <script>
+    System.import('src/index.js');
+  </script>
+  <!-- endbuild -->
+
+</html>
+

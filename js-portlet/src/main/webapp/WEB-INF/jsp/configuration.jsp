@@ -14,10 +14,6 @@
         <input type="text" name="<portlet:namespace/>root" value="<%=request.getAttribute("root")%>" />
     </div>
     <div>
-        <label>Enable CDN mode? (site resources can be accessed from the Internet instead of proxy)</label>
-        <aui:input type="checkbox" label="" name="cdnMode" value='<%=GetterUtil.getBoolean(request.getAttribute("cdnMode"), false)%>' />
-    </div>
-    <div>
         <label>Enable developer mode? (disables cache)</label>
         <aui:input type="checkbox" label="" name="developerMode" value='<%=GetterUtil.getBoolean(request.getAttribute("developerMode"), false)%>' />
     </div>
